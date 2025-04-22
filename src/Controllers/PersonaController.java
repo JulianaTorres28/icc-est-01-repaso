@@ -13,7 +13,19 @@ public class PersonaController {
      * @param personas Array de Persona a ordenar.
      */
     public void ordenarPorEdad(Persona[] personas) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        int inicio=0;
+        int fin = personas.length-1;
+        while (inicio<fin) {
+            for( int i = inicio; i< fin; i++){
+                if (personas[i].getEdad()>personas[i+1].getEdad()) {
+                    Persona aux = personas[i];
+                    personas[i]= personas[i+1];
+                    personas[i+1]= aux;
+                }
+            }
+            fin--;
+        }
+
     }
 
     /**
@@ -26,7 +38,11 @@ public class PersonaController {
      *         encuentra.
      */
     public Persona buscarPorEdad(Persona[] personas, int edad) {
-        throw new UnsupportedOperationException("Not implemented yet.");
-
+        for(Persona persona : personas){
+            if (persona.getEdad()==edad) {
+                return persona;
+            }
+        }
+        return null;
     }
 }
